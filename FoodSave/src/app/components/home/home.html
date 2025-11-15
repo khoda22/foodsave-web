@@ -1,0 +1,60 @@
+<!-- Hero / sección principal -->
+<mat-card class="hero-card">
+  <mat-card-header>
+    <mat-card-title class="hero-title">🍔 FOODSAVE</mat-card-title>
+    <mat-card-subtitle class="hero-subtitle">  Escanea, guarda y salva</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p class="hero-text">💡 La Plataforma que te ayuda a reducir el desperdicio de alimentos y cuidar el planeta.</p>
+    <div class="hero-buttons">
+      <!-- Ajusta rutas de login/registro según tu app -->
+      <button mat-raised-button color="primary" class="login-btn" routerLink="/login">🔐 Iniciar Sesión</button>
+      <button mat-stroked-button color="primary" class="register-btn" routerLink="/usuarios/nuevo">📝 Registrarse</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- Sección ¿Por qué usar FOODSAVE? -->
+<mat-card class="info-card">
+  <mat-card-header>
+    <mat-card-title>❓ ¿Por qué usar FOODSAVE?</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="feature" *ngFor="let item of caracteristicas">
+      <mat-icon>check_circle</mat-icon>
+      <span>✅ {{ item }}</span>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- Sección Cómo empezar -->
+<mat-card class="info-card">
+  <mat-card-header>
+    <mat-card-title>📌 ¿Cómo empezar?</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="step" *ngFor="let paso of pasos; let i = index">
+      <mat-icon>arrow_forward</mat-icon>
+      <span>➡️ {{ i + 1 }}. {{ paso }}</span>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- Sección Contacto -->
+<mat-card class="info-card">
+  <mat-card-header>
+    <mat-card-title>📬 Contáctanos</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      ¿Tienes dudas o sugerencias? 💬 Escríbenos a
+      <a href="mailto:contacto&#64;foodsave.com">📧 contacto&#64;foodsave.com</a>
+      o utiliza el chat interno una vez que hayas iniciado sesión.
+    </p>
+  </mat-card-content>
+</mat-card>
+
+<!-- Footer -->
+<div class="footer">© 2025 ⒻⓄⓄⒹⓈⒶⓋⒺ. Todos los derechos reservados.</div>
+
+ 

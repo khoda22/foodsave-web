@@ -1,0 +1,100 @@
+/* Contenedor principal */
+.container {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #f0f9f4, #ffffff);
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Título del formulario */
+h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #2d5016;
+  margin-bottom: 2rem;
+}
+
+/* Campos del formulario */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+input[matInput] {
+  font-size: 1rem;
+  padding: 12px;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid #e8f5e9;
+  transition: border-color 0.3s ease;
+}
+
+input[matInput]:focus {
+  border-color: #6abf4b;
+  outline: none;
+}
+
+/* Estilo de errores */
+mat-error {
+  font-size: 0.85rem;
+  color: #d32f2f;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* Botón principal */
+button[matButton] {
+  background-color: #6abf4b;
+  color: white;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(106, 191, 75, 0.3);
+}
+
+button[matButton]:hover {
+  background-color: #5da943;
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(106, 191, 75, 0.4);
+}
+
+button[matButton]:active {
+  background-color: #4a8c35;
+  transform: scale(0.98);
+}
+
+button[matButton]:disabled {
+  background-color: #c8e6c9;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive: celulares y pantallas pequeñas */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 2rem 1.2rem;
+    margin: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  button[matButton] {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.9rem;
+  }
+}

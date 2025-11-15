@@ -1,0 +1,329 @@
+<mat-toolbar class="custom-toolbar">
+<div class="logo-contanier">
+    <img src="assets/logo.png" alt="logo FOODSSAVE">
+</div>
+<!-- MENÚ PÚBLICO: visible solo cuando NO ha iniciado sesión -->
+<div *ngIf="!isLoggedInUsuario()">
+  <button mat-button routerLink="/home" class="btn-rojo">
+    <mat-icon>home</mat-icon>
+    Inicio
+  </button>
+</div>
+
+<!-- MENÚ PRIVADO: visible solo cuando SÍ ha iniciado sesión -->
+<div *ngIf="isLoggedInUsuario()">
+  <button mat-button routerLink="/inicio" class="btn-rojo">
+    <mat-icon>home</mat-icon>
+    Inicio
+  </button>
+</div>
+
+  <div *ngIf="!isLoggedInUsuario()">
+    <button mat-button routerLink="/nosotros" class="btn-rojo">
+      <mat-icon>groups</mat-icon>
+      Nosotros
+    </button>
+  </div>
+
+   <!-- OPCIONES VISIBLES SOLO SI ESTÁ LOGUEADO -->
+<div *ngIf="isLoggedIn() && (rolUsuario() === 'PROGRAMADOR' || rolUsuario() === 'ADMIN' )">
+  <button mat-button [matMenuTriggerFor]="menuUsuario" class="btn-rojo">
+    <mat-icon>person</mat-icon>
+    Usuario
+  </button>
+</div>
+
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuUsuarioLogro" class="btn-rojo">
+      <mat-icon>military_tech</mat-icon>
+      Usuario-Logro
+    </button>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuLogro" class="btn-rojo">
+      <mat-icon>emoji_events</mat-icon>
+      Logro
+    </button>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuProducto" class="btn-rojo">
+      <mat-icon>shopping_bag</mat-icon>
+      Producto
+    </button>
+  </div>
+
+   <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuComentarioPublicacion" class="btn-rojo">
+      <mat-icon>rate_review</mat-icon>
+      Comentario Publicación
+    </button>
+  </div>
+
+   <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuCalificacionReceta" class="btn-rojo">
+      <mat-icon>star</mat-icon>
+      Calificación Receta
+    </button>
+  </div>
+
+  <!-- BOTÓN ROL visible solo para usuarios con rol PROGRAMADOR -->
+<div *ngIf="isLoggedIn() && (rolUsuario() === 'PROGRAMADOR' || rolUsuario() === 'ADMIN' )">
+  <button mat-button [matMenuTriggerFor]="menuRol" class="btn-rojo">
+    <mat-icon>supervisor_account</mat-icon>
+    Rol
+  </button>
+</div>
+  <!-- ESPACIADOR PARA ALINEAR BOTONES A LA DERECHA -->
+  <span class="spacer"></span>
+
+  <!-- ✅ CÓDIGO CORREGIDO DEL MENÚ -->
+<div *ngIf="!isLoggedIn()">
+  <button mat-stroked-button color="accent" routerLink="/login" class="btn-login">
+    <mat-icon>login</mat-icon> Iniciar Sesión
+  </button>
+  <button mat-raised-button color="accent" type="button" (click)="registrar()" class="btn-registrar">
+    <mat-icon>person_add</mat-icon> Registrarse
+  </button>
+</div>
+
+   <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-raised-button color="warn" class="logout-button" routerLink="/chatIA">Chat-IA</button>
+  </div>
+
+  <!-- BOTÓN mi cuenta -->
+   <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+  <button mat-raised-button color="warn" class="logout-button" routerLink="/mi-perfil">
+    Mi cuenta
+  </button>
+</div>
+<!-- BOTÓN DE cerrar sesión -->
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-raised-button color="warn" class="logout-button" routerLink="/home" (click)="logout()">Cerrar Sesión</button>
+  </div>
+
+</mat-toolbar>
+
+<mat-toolbar class="custom-toolbar" *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+  <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuNotificacion" class="btn-rojo">
+    <mat-icon>notifications_active</mat-icon>
+    Notificación
+  </button>
+  </div>
+
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuGrupo" class="btn-rojo">
+      <mat-icon>supervised_user_circle</mat-icon>
+      Grupo
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuUsuarioGrupo" class="btn-rojo">
+      <mat-icon>group_add</mat-icon>
+      Usuario Grupo
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedIn() && (rolUsuario() === 'PROGRAMADOR' || rolUsuario() === 'ADMIN' )">
+    <button mat-button [matMenuTriggerFor]="menuInventario" class="btn-rojo">
+      <mat-icon>inventory</mat-icon>
+      Inventario
+    </button>
+  </div>
+
+    <div *ngIf="isLoggedIn() && (rolUsuario() === 'PROGRAMADOR' || rolUsuario() === 'ADMIN' )">
+    <button mat-button [matMenuTriggerFor]="menuPreferenciasUsuario" class="btn-rojo">
+      <mat-icon>person</mat-icon>
+      Preferencias Usuario
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuReceta" class="btn-rojo">
+      <mat-icon>restaurant_menu</mat-icon>
+      Receta
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuPublicacion" class="btn-rojo">
+      <mat-icon>article</mat-icon>
+      Publicación
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuIngredienteReceta" class="btn-rojo">
+      <mat-icon>kitchen</mat-icon>
+      Ingrediente Receta
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuIntercambio" class="btn-rojo">
+      <mat-icon>swap_horiz</mat-icon>
+      Intercambio
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuDonacion" class="btn-rojo">
+      <mat-icon>volunteer_activism</mat-icon>
+      Donación
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuEscaneo" class="btn-rojo">
+      <mat-icon>qr_code_scanner</mat-icon>
+      Escaneo
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuClasificacionSemanal" class="btn-rojo">
+      <mat-icon>event</mat-icon>
+      Clasificación Semanal
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuFavoritoReceta" class="btn-rojo">
+      <mat-icon>favorite</mat-icon>
+      Favorito Receta
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
+    <button mat-button [matMenuTriggerFor]="menuActividadUsuario" class="btn-rojo">
+      <mat-icon>timeline</mat-icon>
+      Actividad Usuario
+    </button>
+  </div>
+
+ <span class="spacer"></span>
+
+  <div *ngIf="isLoggedIn() && (rolUsuario() === 'PROGRAMADOR' || rolUsuario() === 'ADMIN' )">
+  <button mat-button [matMenuTriggerFor]="menuReportes" class="btn-rojo">
+   <mat-icon>insert_chart</mat-icon>
+   Reportes
+  </button>
+ </div>
+
+</mat-toolbar>
+
+
+
+<!-- MENÚS -->
+<mat-menu #menuUsuarioLogro="matMenu">
+  <button mat-menu-item routerLink="/usuario-logro" *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'PROGRAMADOR' || rolUsuarioActual() === 'CLIENTE'">Listar</button>
+  <button mat-menu-item routerLink="/usuario-logro/nuevo" *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'PROGRAMADOR'">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuLogro="matMenu">
+  <button mat-menu-item routerLink="/logro">Listar</button>
+  <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'PROGRAMADOR'" routerLink="/logro/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuProducto="matMenu">
+  <button mat-menu-item routerLink="/producto">Listar</button>
+  <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'PROGRAMADOR' || rolUsuarioActual() === 'CLIENTE'" routerLink="/producto/nuevo">Registrar</button>
+  <button mat-menu-item *ngIf="isLoggedIn" routerLink="/producto/busquedas">Buscar por palabra clave</button>
+</mat-menu>
+
+<mat-menu #menuRol="matMenu">
+  <button mat-menu-item routerLink="/rol">Listar</button>
+  <button mat-menu-item routerLink="/rol/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuComentarioPublicacion="matMenu">
+  <button mat-menu-item routerLink="/comentario-publicacion">Listar</button>
+  <button mat-menu-item routerLink="/comentario-publicacion/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuUsuario="matMenu">
+  <button mat-menu-item routerLink="/usuario">Listar</button>
+  <button mat-menu-item routerLink="/usuario/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuCalificacionReceta="matMenu">
+  <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'PROGRAMADOR' || rolUsuarioActual() === 'CLIENTE'" routerLink="/calificacion-receta">Listar</button>
+  <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'PROGRAMADOR' || rolUsuarioActual() === 'CLIENTE'" routerLink="/calificacion-receta/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuNotificacion="matMenu">
+  <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'PROGRAMADOR' || rolUsuarioActual() === 'CLIENTE'" routerLink="/notificacion">Listar</button>
+  <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'PROGRAMADOR'" routerLink="/notificacion/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuReportes="matMenu">
+  <button mat-menu-item routerLink="/reporte-contenido">Promedio Notificaciones</button>
+</mat-menu>
+
+<mat-menu #menuGrupo="matMenu">
+  <button mat-menu-item routerLink="/grupo">Listar</button>
+  <button mat-menu-item routerLink="/grupo/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuUsuarioGrupo="matMenu">
+  <button mat-menu-item routerLink="/usuario-grupo">Listar</button>
+  <button mat-menu-item routerLink="/usuario-grupo/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuInventario="matMenu">
+  <button mat-menu-item routerLink="/inventario">Listar</button>
+  <button mat-menu-item routerLink="/inventario/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuPreferenciasUsuario="matMenu">
+  <button mat-menu-item routerLink="/preferencias-usuario">Listar</button>
+  <button mat-menu-item routerLink="/preferencias-usuario/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuReceta="matMenu">
+  <button mat-menu-item routerLink="/receta">Listar</button>
+  <button mat-menu-item routerLink="/receta/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuPublicacion="matMenu">
+  <button mat-menu-item routerLink="/publicacion">Listar</button>
+  <button mat-menu-item routerLink="/publicacion/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuIngredienteReceta="matMenu">
+  <button mat-menu-item routerLink="/ingrediente-receta">Listar</button>
+  <button mat-menu-item routerLink="/ingrediente-receta/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuIntercambio="matMenu">
+  <button mat-menu-item routerLink="/intercambio">Listar</button>
+  <button mat-menu-item routerLink="/intercambio/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuDonacion="matMenu">
+  <button mat-menu-item routerLink="/donacion">Listar</button>
+  <button mat-menu-item routerLink="/donacion/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuEscaneo="matMenu">
+  <button mat-menu-item routerLink="/escaneo">Listar</button>
+  <button mat-menu-item routerLink="/escaneo/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuClasificacionSemanal="matMenu">
+  <button mat-menu-item routerLink="/clasificacion-semanal">Listar</button>
+  <button mat-menu-item routerLink="/clasificacion-semanal/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuFavoritoReceta="matMenu">
+  <button mat-menu-item routerLink="/favorito-receta">Listar</button>
+  <button mat-menu-item routerLink="/favorito-receta/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuActividadUsuario="matMenu">
+  <button mat-menu-item routerLink="/actividad-usuario">Listar</button>
+  <button mat-menu-item routerLink="/actividad-usuario/nuevo">Registrar</button>
+</mat-menu>

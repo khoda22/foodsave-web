@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #012F16; /* Verde oscuro para elementos principales como el título */
+  --secondary-color: #B6C471; /* Verde oliva - Color principal de marca */
+  --user-bubble-bg: #FFFC02; /* Amarillo para burbujas de usuario */
+  --text-color: #3B3B3B; /* Gris oscuro para la mayoría del texto */
+  --border-color: #B6C471; /* Verde oliva para bordes */
+  --background-page: #FFFOD4; /* Crema - Fondo muy claro de la página */
+  --background-container: #ffffff; /* Fondo blanco para el chat container */
+  --button-background-user: #B6C471; /* Verde oliva para botón de usuario */
+  --button-background-advanced: #663300; /* Marrón para botón avanzado */
+  --button-background-send: #FFFC02; /* Amarillo para botón de enviar */
+  --button-background-accept: #EF9145; /* Naranja para botón de aceptar */
+  --button-background-cancel: #818181; /* Gris medio para botón de cancelar */
+  --border-radius-main: 15px;
+  --border-radius-bubble: 18px;
+  --font-family: 'Segoe UI', 'Roboto', sans-serif;
+  --shadow-light: 0 4px 12px rgba(1, 47, 22, 0.1);
+}
+
+/* Estilos globales */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  /* Usamos la variable de color de fondo de la página */
+  background-color: var(--background-page);
+  /* Usamos la variable de fuente definida en :root */
+  font-family: var(--font-family);
+  color: var(--text-color); /* Asegura que el texto global tenga el color definido */
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

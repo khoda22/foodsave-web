@@ -1,0 +1,270 @@
+css:host {
+  display: block;
+  background-color: #FFF0D4; /* crema claro de marca */
+  padding-bottom: 40px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ===== Hero / sección principal ===== */
+.hero-card {
+  margin: 40px auto;
+  padding: 24px;
+  max-width: 900px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #B6C471, #012F16); /* verde oliva + verde oscuro */
+  color: white;
+  box-shadow: 0 6px 20px rgba(1, 47, 22, 0.3);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.95;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #FFF0D4;
+}
+
+/* Texto descriptivo */
+.hero-text {
+  margin: 20px 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #FFFFFF;
+}
+
+/* Botón de Iniciar Sesión */
+.login-btn {
+  background: linear-gradient(135deg, #012F16, #663300);
+  color: white;
+  padding: 12px 28px;
+  font-weight: 600;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(1, 47, 22, 0.3);
+  transition: all 0.3s ease;
+  letter-spacing: 0.6px;
+  margin-right: 10px;
+}
+
+.login-btn:hover {
+  background: linear-gradient(135deg, #663300, #012F16);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(102, 51, 0, 0.4);
+}
+
+/* Botón de Registrarse */
+.register-btn {
+  border: 2px solid #EF9145;
+  color: #663300;
+  padding: 12px 28px;
+  font-weight: 600;
+  border-radius: 30px;
+  background-color: #FFFC02;
+  transition: all 0.3s ease;
+  letter-spacing: 0.6px;
+}
+
+.register-btn:hover {
+  background-color: #EF9145;
+  border-color: #663300;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(239, 145, 69, 0.4);
+}
+
+/* ===== Secciones de contenido ===== */
+.info-card {
+  margin: 24px auto;
+  padding: 24px;
+  max-width: 800px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 2px 12px rgba(1, 47, 22, 0.08);
+  border-top: 4px solid #B6C471;
+}
+
+.info-card mat-card-title {
+  font-size: 1.7rem;
+  color: #012F16;
+  font-weight: 700;
+}
+
+.info-card p {
+  margin: 12px 0;
+  line-height: 1.6;
+  color: #3B3B3B;
+  font-size: 1.05rem;
+}
+
+.info-card a {
+  color: #012F16;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.info-card a:hover {
+  color: #B6C471;
+  text-decoration: underline;
+}
+
+/* ===== Listado de características y pasos ===== */
+.feature,
+.step {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background-color: #FFF0D4;
+  transition: all 0.3s ease;
+  border-left: 4px solid #B6C471;
+}
+
+.feature:hover,
+.step:hover {
+  background-color: #B6C471;
+  transform: translateX(5px);
+}
+
+.feature mat-icon,
+.step mat-icon {
+  margin-right: 10px;
+  color: #663300;
+}
+
+.feature span,
+.step span {
+  font-size: 1rem;
+  color: #012F16;
+  font-weight: 500;
+}
+
+.feature:hover span,
+.step:hover span {
+  color: #FFFFFF;
+}
+
+.feature:hover mat-icon,
+.step:hover mat-icon {
+  color: #FFFFFF;
+}
+
+/* ===== Responsividad básica ===== */
+@media (max-width: 600px) {
+  .hero-card,
+  .info-card {
+    margin: 16px;
+    padding: 16px;
+  }
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-subtitle {
+    font-size: 1.05rem;
+  }
+  .hero-text,
+  .feature span,
+  .step span {
+    font-size: 1rem;
+  }
+}
+
+/* ===== Decorativos (Overlay y capas) ===== */
+.hero-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(1, 47, 22, 0.15);
+  pointer-events: none;
+}
+
+.hero-card mat-card-header {
+  background: transparent;
+}
+
+.hero-card mat-card-content,
+.hero-card mat-card-title,
+.hero-card mat-card-subtitle {
+  position: relative;
+  z-index: 1;
+}
+
+/* Footer con branding */
+.footer {
+  background-color: #012F16;
+  color: white;
+  padding: 20px 16px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 60px;
+  border-top: 4px solid #B6C471;
+  box-shadow: 0 -2px 10px rgba(1, 47, 22, 0.15);
+}
+
+.footer a {
+  color: #FFFC02;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #EF9145;
+}
+
+/* Badges y destacados */
+.badge {
+  background-color: #FFFC02;
+  color: #663300;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-block;
+  margin: 5px;
+}
+
+/* Sección de estadísticas o destacados */
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 30px 0;
+  gap: 20px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(1, 47, 22, 0.1);
+  min-width: 150px;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #B6C471;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  color: #3B3B3B;
+  font-weight: 500;
+}
