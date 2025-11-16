@@ -1,0 +1,47 @@
+<div class="container">
+  <h1 style="text-align: center; margin: 20px;">Buscar artículos por autor</h1>
+
+  <form [formGroup]="form" (ngSubmit)="buscar()" style="text-align: center; margin-bottom: 30px;">
+    <mat-form-field appearance="fill" style="width: 50%;">
+      <mat-label>Nombre del producto</mat-label>
+      <input matInput placeholder="Ej. Leche" formControlName="nombre" />
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+        El nombre es obligatorio
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <button mat-raised-button color="primary" type="submit">Buscar</button>
+  </form>
+
+  <div *ngIf="sinResultados" style="text-align: center; margin-top: 20px;">
+    <p>No se encontraron nombres del producto "{{ nombreBuscado }}".</p>
+  </div>
+
+  <div *ngIf="resultados.length > 0">
+    <h2 style="margin-left: 20px;">Resultados:</h2>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      
+      <mat-card *ngFor="let producto of resultados" style="width: 300px;">
+
+        <!-- SOLO UN HEADER -->
+        <mat-card-header>
+          <mat-card-title>{{ producto.categoria }}</mat-card-title>
+          <mat-card-subtitle>{{ producto.vidaUtilDias }} días</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p><strong>Estado:</strong> {{ producto.estado }}</p>
+          <p><strong>Código de Barra:</strong> {{ producto.codigoBarra }}</p>
+          <p><strong>Peso Unitario:</strong> {{ producto.pesoUnitario }} g</p>
+        </mat-card-content>
+
+        <mat-card-footer>
+          <small><strong>Nombre:</strong> {{ producto.nombre }}</small>
+        </mat-card-footer>
+
+      </mat-card>
+
+    </div>
+  </div>
+</div>

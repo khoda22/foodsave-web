@@ -1,0 +1,71 @@
+.btn-login:hover {
+  background-color: #012F16;
+  color: #FFFFFF;
+}
+
+.btn-registrar {
+  background-color: #012F16;
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(1, 47, 22, 0.3);
+}
+
+.btn-registrar:hover {
+  background-color: #663300;
+  box-shadow: 0 4px 12px rgba(102, 51, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.logout-button {
+  background-color: #012F16; /* Verde oscuro */
+  color: #FFFFFF; /* Blanco */
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(1, 47, 22, 0.3);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  margin: 0 4px;
+}
+
+.logout-button:hover {
+  background-color: #663300; /* Marrón al hover */
+  box-shadow: 0 6px 14px rgba(102, 51, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.logo-contanier {
+  height: 40px; /* Ajusta esta altura según la altura de tu barra de navegación */
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+/* Estilo para la imagen del logo */
+.logo-contanier img {
+  height: 100%;       /* La imagen ocupa toda la altura del contenedor */
+  width: auto;        /* El ancho se ajusta para no deformar la imagen */
+  display: block;
+}
+
+/* Estilos para los mat-menu */
+.mat-mdc-menu-panel {
+  background-color: #FFF0D4; /* Color crema claro */
+}
+
+.mat-mdc-menu-item {
+  color: #012F16;
+  transition: background-color 0.2s ease;
+}
+
+.mat-mdc-menu-item:hover {
+  background-color: #B6C471;
+  color: #012F16;
+}
+
+.mat-mdc-menu-item mat-icon {
+  color: #663300;
+}

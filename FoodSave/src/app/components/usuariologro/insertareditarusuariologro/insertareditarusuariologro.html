@@ -1,0 +1,60 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%">
+    <h1>Registro de Usuarios-Premio</h1>
+  </div>
+
+  <div style="text-align: center; margin: 5%">
+    <form [formGroup]="form" (submit)="aceptar()">
+
+      <!-- Campo ID (solo si edita) -->
+      <mat-form-field *ngIf="edicion" appearance="fill">
+        <mat-label>🆔 ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          ¡El código es obligatorio para actualizar!
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Selector de Logro -->
+      <mat-form-field appearance="fill">
+        <mat-label>🎁 Logros</mat-label>
+        <mat-select formControlName="logro">
+          @for (food of listaLogros; track food) {
+            <mat-option [value]="food.id">{{ food.nombreLogro }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('logro')?.hasError('required')">
+          ¡El logro es obligatorio!
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Selector de Usuario -->
+      <mat-form-field appearance="fill">
+        <mat-label>👤 Usuarios</mat-label>
+        <mat-select formControlName="usuario">
+          @for (food of listaUsuarios; track food) {
+            <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+          ¡El usuario es obligatorio!
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Selector de Fecha -->
+      <mat-form-field appearance="fill">
+  <mat-label>📅 Fecha del logro</mat-label>
+  <input matInput [matDatepicker]="picker" formControlName="fechaLogro">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+
+  <mat-error *ngIf="form.get('fechaLogro')?.hasError('required')">
+    ¡La fecha es obligatoria!
+  </mat-error>
+</mat-form-field>
+
+      <!-- Botón -->
+      <button matButton="filled">💾 Registrar</button>
+    </form>
+  </div>
+</div>
